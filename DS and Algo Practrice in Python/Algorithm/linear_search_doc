@@ -1,0 +1,14 @@
+Linear search is a way to find something from start using loop.
+Loop will check every element from the list/data set from scratch and if the element
+found then the loop will break.
+
+অ্যারেতে যদি ১০টা ডেটা থাকে তাহলে কোন একটা ডেটা খোঁজার জন্য অ্যারের শুরু থেকে প্রতিটা ইন্ডেক্সের
+ভ্যালু ধরে ধরে চেক করতে হবে যে অ্যারেতে থাকা ভ্যালুটা আমাদের কাংক্ষিত ভ্যালু কিনা।
+লাইন ধরে একটার পর একটা সার্চ করেই যাচ্ছি, করেই যাচ্ছি তাই এই সার্চিং এর নাম লিনিয়ার সার্চ।
+
+
+according to Tutorialpoints:
+
+Linear search is a very simple search algorithm. In this type of search, a sequential search is made over all items one by one.
+Every item is checked and if a match is found then that particular item is returned,
+otherwise the search continues till the end of the data collection.
