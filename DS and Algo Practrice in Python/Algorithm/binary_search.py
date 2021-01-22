@@ -1,16 +1,21 @@
-def binary_search(L,x):
-    left,right =0,len(L)-1
+def binary_search(arr,left,right,number):
+	while left <=right :
+		mid_index= (left+right)//2
+		if arr[mid_index] == number:
+			return mid_index
+		elif arr[mid_index] < number:
+			left = mid_index+1
+		else:
+			right = mid_index-1
+	return -1
 
-    while left <= right:
-        mid =(left+right)//2
+arr = [10,20,34,55,66,67,87,90]
+left = 0
+right= len(arr)-1
+number =66
+result = binary_search(arr,left,right,number)
 
-        if L[mid] ==x:
-            return mid
-
-        if L[mid] <x:
-            left = mid+1
-        else:
-            right = mid-1
-    return -1
-
-print(binary_search([1,4,6,7,10,19,22,23,30,35,39,46,50],10))
+if result !=-1:
+	print("Found index ",result)
+else:
+	print("Not found")
