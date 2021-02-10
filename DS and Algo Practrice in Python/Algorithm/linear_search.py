@@ -1,10 +1,11 @@
 def linear_search(arr, length, num):
-    for i in range(0, length):
+    while i<length:
         if(arr[i] == num):
             return i
     return -1
 
 arr = [10,20,30,40,44,55]
+i=0
 lenght = len(arr)
 num = int(input("Enter the value you want to search "))
 

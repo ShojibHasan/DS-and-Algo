@@ -1,0 +1,21 @@
+from collections import deque 
+	
+queue = deque('ALO') 
+for elem in queue:
+    print(elem.upper())
+queue.append('J')
+print(queue)
+queue.appendleft('F')
+print(queue)
+queue.pop()
+print(queue)
+list(reversed(queue))
+print(queue)
+queue.extend('JKL')
+print(queue)
+queue.rotate(1)
+print(queue)
+queue.rotate(-1)
+print(queue)
+deque(reversed(queue))
+print(queue)
