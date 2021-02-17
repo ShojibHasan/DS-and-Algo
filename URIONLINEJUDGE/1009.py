@@ -1,0 +1,5 @@
+employee_name = input()
+employee_salary = float(input())
+product_selling_value = float(input())
+total_salary = employee_salary + (0.15*product_selling_value)
+print("TOTAL = R$ %.2f"%total_salary)
