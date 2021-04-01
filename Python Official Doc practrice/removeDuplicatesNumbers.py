@@ -52,6 +52,16 @@
 
 
 
-mylist = [11,11,22,22,33,33,444,33,444]
-mylist = list(dict.fromkeys(mylist))
-print(mylist)
+# mylist = [11,11,22,22,33,33,444,33,444]
+# mylist = list(dict.fromkeys(mylist))
+# print(mylist)
+
+res = [] 
+test_list = [11,11,22,22,33,33,444,33,444]
+
+for i in test_list: 
+    if i not in res: 
+        res.append(i) 
+print(res)
+
+

@@ -1,10 +1,22 @@
-def makingthenumber(nums,given_number):
-    n = len(nums)
-    for i in range(0,n):
-        if nums[i]+nums[i-1] == given_number:
-            return nums[i] , nums[i-1]
-        else:
-            print("not possible")
-given_number =10
-numbers =[1,4,5,6,2,8]
-print(makingthenumber(given_number))
+
+# Python program to find if there are
+# two elements wtih given sum
+ 
+# function to check for the given sum
+# in the array
+# This code is contributed by __Devesh Agrawal__
+
+def printPairs(arr, arr_size, sum):
+	s = set()
+	
+	for i in range(0, arr_size):
+		temp = sum-arr[i]
+		if (temp in s):
+			print ("Pair with given sum "+ str(sum) +" is (" + str(arr[i]) + ", " + str(temp) + ")")
+		s.add(arr[i])
+
+A = [1, 4, 45, 6, 10, 8,2,-5,15,20,-10,100,-90]
+n = 10
+printPairs(A, len(A), n)
+
+
