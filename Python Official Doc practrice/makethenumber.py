@@ -15,8 +15,8 @@ def printPairs(arr, arr_size, sum):
 			print ("Pair with given sum "+ str(sum) +" is (" + str(arr[i]) + ", " + str(temp) + ")")
 		s.add(arr[i])
 
-A = [1, 4, 45, 6, 10, 8,2,-5,15,20,-10,100,-90]
-n = 10
+A = [0,-1,2,-3,1]
+n = -2
 printPairs(A, len(A), n)
 
 
