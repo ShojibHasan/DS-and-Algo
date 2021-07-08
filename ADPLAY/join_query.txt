@@ -1,0 +1,1 @@
+SELECT * FROM EXAM INNER JOIN Student on Student.RollNo = Exam.RollNo 
