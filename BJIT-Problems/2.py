@@ -6,7 +6,6 @@ class Address:
         self.zip = zip
         self.country = country
 
-    
     def get_address(self):
         return f"Street :{self.street}, Street 2: {self.street2}, City: {self.city}, ZIP: {self.zip}, Country: {self.country}"
 
