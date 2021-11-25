@@ -8,4 +8,4 @@ for i in range(5):
         if value_list[i][j] ==1:
             index1 = i-2
             index2 = j-2
-print(abs(index1)+abs(index2))
+print(abs(index1)+abs(index2))                                                          
