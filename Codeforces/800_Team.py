@@ -7,7 +7,5 @@ def solution(problem_numbers):
             output_value = output_value+1
     print(output_value)
             
-
-
 problem_numbers = int(input())
 solution(problem_numbers)
