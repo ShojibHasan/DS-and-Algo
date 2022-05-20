@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <button type="button" class="a-button t-recommend__readMoreBtn">
+      <div class="a-button__inner">
+        <p class="lol">
+            
+            もっとみる</p>
+      </div>
+    </button>
+    <p id="print"></p>
+
+    <script>
+      var x = myFun();
+      document.getElementById("print").innerHTML = x;
+
+      function myFun() {
+        return Array.from(document.querySelectorAll("*"))
+          .find((el) => el.textContent === "もっとみる")
+          .getAttribute("class");
+      }
+    </script>
+  </body>
+</html>
