@@ -1,11 +1,15 @@
 class Solution:
     def lengthOfLongestSubstring(self, s):
         empty_list = ""
+        j=0
         
         for i in s:
-            if i not in empty_list:
+            if i in empty_list:
+                j=0
+            else:
                 empty_list = empty_list+i
-        return len(empty_list)
+                j+=1
+        return j
     
     
 h = Solution()
