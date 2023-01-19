@@ -136,8 +136,8 @@
 # 	print(dt)
 
 
-A,B,C = list(map(float,input().split()))
-print(max(A,B,C))
+# A,B,C = list(map(float,input().split()))
+# print(max(A,B,C))
 # traingle = 0.5*A*C
 # circle = 3.14159*C*C
 # trapizume = (A+B)/2.0*C
@@ -148,3 +148,16 @@ print(max(A,B,C))
 # print("TRAPEZIO: %.3f"%trapizume)
 # print("QUADRADO: %.3f"%square)
 # print("RETANGULO: %.3f"%rectangle)
+
+import datetime
+
+weekno = datetime.datetime.today().weekday()
+
+if weekno < 5:
+    print ("Weekday")
+else:  # 5 Sat, 6 Sun
+    print ("Weekend")
+    
+    
+    
+    

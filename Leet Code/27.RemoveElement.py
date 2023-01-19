@@ -7,8 +7,9 @@ class Solution:
                 nums[r] = nums[i]
                 r += 1
             i+=1
+        return r
 nums = [0,1,2,2,3,0,4]
 val =2
 solve = Solution()
-solve.removeElement(nums,val)
-print(nums)
+x=solve.removeElement(nums,val)
+print(x)

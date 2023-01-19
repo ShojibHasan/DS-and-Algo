@@ -1,7 +1,3 @@
-from tkinter.messagebox import NO
-from wsgiref.util import guess_scheme
-
-
 def binary_search(item,list):
     low =0
     high = len(list)-1
