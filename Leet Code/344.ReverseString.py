@@ -11,9 +11,6 @@ class Solution:
             j-=1
         return s
 
-        
-
-
 object = Solution()
 s = ["h","e","l","l","o"]
 print(object.reverseString(s))

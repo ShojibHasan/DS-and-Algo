@@ -1,5 +1,5 @@
 # x = str(56565)
-def isPalindrome(n: int) -> bool:
+def isPalindrome(n):
 
     x = str(n)
     z = ""
@@ -12,5 +12,5 @@ def isPalindrome(n: int) -> bool:
     
         
         
-a = isPalindrome(56565)
+a = isPalindrome(-121)
 print(a)

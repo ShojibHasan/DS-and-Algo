@@ -32,3 +32,5 @@ start_time = time.perf_counter()
 print(fibonacci(30))
 end_time = time.perf_counter()
 print(f"The execution time: {end_time - start_time:.8f} seconds")
+
+# 3.73399930

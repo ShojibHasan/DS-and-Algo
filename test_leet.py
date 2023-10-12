@@ -9,13 +9,7 @@
 #         i+=1
 #     return j
     
-# nums = [3,2,2,3]
-# vals= 3
-# a = removeElement(nums,vals)
-# print(a)
-
-
-a = [{'a':10,'b':10},{'c':10,'d':10}]
-
-for i in a:
-    print(i.get('a'))
+nums = [3,2,2,3]
+vals= 3
+a = removeElement(nums,vals)
+print(a)
