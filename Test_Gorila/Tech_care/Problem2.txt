@@ -1,0 +1,40 @@
+You are a python developer. Now solve the below problem. 
+
+You are the  manager of a popular restaurant chain. You have two warehouese that service your restaurants. you have been tasked to go through the inventory at both warehouses and provide a sorted,comprehensive list of all of your items between the two warehouses. 
+
+You assistant has written a function completed_inventory that takes 2 integer arrays(warehouse_1 and warehouse_2) and 2 integers (x and y) and returns an array. The arrays warehouse_1 and warehouse_2 contain the product IDs of your inventory in warehouse 1 and warehouse 2 respectively, in sorted fashion. The integers x and y represent the number of initialized items in warehouse_1 and warehouse_2 respectively. Also note that warehouse_1 will be large enough to hold all values of both warehose_1 and warehouse_1. 
+
+The goal of the function is to combine warehouse_1 and warehouse_2 into warehouse_1 in a way that you get a sorted array of product IDs from both warehoused. 
+
+You found some issues with the function your assistant made and it's up to you to debug the function. 
+
+The function  is :
+
+def complete_inventory( warehouse_1, x, warehouse_2, y ) :
+	back_index = len(warehouse_1)
+	first_pointer = x
+	second_pointer = y
+	while second_pointer > 0:
+		if first_pointer > 0 and warehouse_1[first_pointer] > warehouse_2[second_pointer]:
+			warehouse_1[back_index] = warehouse_1[first_pointer]
+		else:
+			warehouse_1[back_index] = warehouse_2[second_pointer]
+		
+	return warehouse_1
+
+
+Example Input: 
+
+warehouse_1 = [2,3,4,0,0,0], x=3
+warehouse_2 = [1,5,9], x=3
+
+output: [1,2,3,4,5,9]
+
+Example 2:
+
+
+warehose_1 = [1,8,0,0,0], x=2
+warehouse_2 = [1,1,5],y=3
+Output: [1,1,1,5,8]
+
+Tips: You can think of the trailing 0's in warehouse_1 as "empty shelves" or placeholders for items from warehouse_2

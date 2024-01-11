@@ -1,0 +1,72 @@
+Question:
+In this coding task you are implementing a data structure that will be able to store and retrieve values based on a had key. The data structure has defined number of "slots". Each slot will be accessed by a unique hash key, but each slot may contain multiple values - a concept know as hash collision. 
+
+The skeleton class MySpecialTable is provided . 
+
+def special_data_table( number_of_slots, values, find_item ) :
+	####### DO NOT MODIFY BELOW #######
+	myTable = MySpecialTable(number_of_slots)
+	for val in values:
+		myTable.add_item(val)
+
+	return myTable.find_item(find_item)
+	####### DO NOT MODIFY ABOVE #######
+
+class MySpecialTable():
+		def __init__(self, slots):
+			self.slots = slots
+			self.table = []
+			self.create_table()
+
+		def hash_key(self, value):
+			pass
+
+		def create_table(self):
+			pass
+
+		def add_item(self, value):
+			pass
+
+		def find_item(self, item):
+			pass
+
+You will need to implement the following four functions. 
+
+
+1. create_table(self) : this function initializes the data structure in accordance with the number of slots
+
+2. has_key(self,value): this function computes a has key for a given value. The has key should be the modulus of the value and the number of slots
+
+3. add_item(self,value):  this function computes a has key for the given value and adds that value  to the table
+
+4. find_item(self, item): this function return the slot of the given item. if the item is not in the table , the function should return -1 
+
+Example 1: 
+Input: 
+number_of_slots=3
+values = [1,2,5,7,9]
+find_item =3
+
+output: 0
+
+Explanation: after hashing/adding all values, the table would look as follows:[[3,9],[1,7],[5]].
+The item we are looking for is 3, which is found in the first slow or index 0, and hence the output is 0
+
+Example 2: 
+
+Input:
+number_of_slots = 5
+values = [1,2,3,4,5,6,7,8,9,10]
+find_item = 7
+output: 2
+
+Explanation: after hashing/adding all the values, the table would look as follows: [[5,10],[1,6],[2,7],[3,8],[4,9]].
+The item we are looking for is 7, which is found at index 2. 
+
+Example 3:
+number_of_slots =5
+values=[1,2,3,4,5,6,7,8,9,10]
+find_item = 100
+output : -1
+
+Explanation: the item 100 is not in the table so the fundtion return -1
