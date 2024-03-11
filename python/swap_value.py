@@ -1,7 +1,7 @@
 # Swap 2 value without temp variable
 
-a = 5
-b =10
+a = "Hello"
+b ="World"
 
 a= a+b
 b = a-b
