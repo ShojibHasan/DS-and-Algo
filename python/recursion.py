@@ -38,15 +38,26 @@
 # f = outer("Hello Workld")
 # f()
 
-def decoraor(original_func):
-    print('In the decorator function \n')
+# def decoraor(original_func):
+#     print('In the decorator function \n')
+#
+#     def wrapper():
+#         print(f'wrapper executed before {original_func.__name__}()')
+#         if 10>5:
+#             print('Yes it is true')
+#
+#             return original_func() + 'extra string'
+#
+#     return wrapper
 
-    def wrapper():
-        print(f'wrapper executed before {original_func.__name__}()')
-        if 10>5:
-            print('Yes it is true')
+# def sum(n):
+#     if n==0:
+#         return 0
+#     else:
+#         return sum(n-1)+n
+#
+# print(sum(5))
 
-            return original_func() + 'extra string'
-
-    return wrapper
-
+def sum(n):
+    return n*(n+1)//2
+print(sum(5))
