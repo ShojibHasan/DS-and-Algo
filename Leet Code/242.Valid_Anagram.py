@@ -1,8 +1,5 @@
 from collections import defaultdict
-def isAngama():
-    a = "anagram"
-    b = "nagaram"
-
+def isAngama(a,b):
 
     hash = defaultdict(int)
     for c in a:
@@ -15,4 +12,6 @@ def isAngama():
             return False
     return True
 
-print(isAngama())
+a = "anagram"
+b = "nagaram"
+print(isAngama(a,b))
