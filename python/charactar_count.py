@@ -11,3 +11,9 @@ for i in input_str:
     else:
         count_value[i] = 1
 print(count_value)
+
+for i in input_str:
+    if i in count_value:
+        count_value[i] +=1
+    else:
+        count_value[i] =1

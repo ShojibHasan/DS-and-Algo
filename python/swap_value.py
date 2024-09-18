@@ -1,9 +1,9 @@
 # Swap 2 value without temp variable
 
-a = "Hello"
-b ="World"
+a = 3
+b = 1
 
-a= a+b
+a = a+b
 b = a-b
 a = a-b
 

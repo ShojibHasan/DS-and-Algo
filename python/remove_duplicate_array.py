@@ -15,10 +15,13 @@
 #     print("Result: ",result)
 #     return result
 
-mylist = [11,11,44,22,22,33,33,444,33,444]
-mylist = list(dict.fromkeys(mylist))
-print(mylist)
+# mylist = [11,11,44,22,22,33,33,444,33,444]
+# mylist = list(dict.fromkeys(mylist))
+# print(mylist)
 
 # print(remove_duplicate_array([1,5,4,4,1,3,10,7,6,8,8,7]))
     
-    
+
+mylist = [11,22,55,44,33,99,66,88,10,43,34,56,65,65,34]
+mylist = list(dict.fromkeys(mylist))
+print(mylist)

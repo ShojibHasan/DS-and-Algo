@@ -149,15 +149,140 @@
 # print("QUADRADO: %.3f"%square)
 # print("RETANGULO: %.3f"%rectangle)
 
-import datetime
+# import datetime
 
-weekno = datetime.datetime.today().weekday()
+# weekno = datetime.datetime.today().weekday()
 
-if weekno < 5:
-    print ("Weekday")
-else:  # 5 Sat, 6 Sun
-    print ("Weekend")
+# if weekno < 5:
+#     print ("Weekday")
+# else:  # 5 Sat, 6 Sun
+#     print ("Weekend")
     
     
+import json   
+import re
+import logging
+
+LOGGER = logging.getLogger(__name__)
+LOGGER.setLevel(logging.INFO)
+
+def sort_run_files(item):
+    # Sort run files
+    return [int(part) for part in item.split(".")[0].split('_') if part.isdigit()]
+
+def filter_files_with_group_key(file_name_list, group_key):
+    # Filter file names with group key
+    return [file for file in file_name_list if re.search(group_key, file)]
+
+def filter_files_with_file_keys(file_names, group_key, file_key_list):
+    filtered_list = [
+        file_name for file_name in file_names
+        if any(file_key in file_name for file_key in file_key_list)
+    ]
+    # Extract group key dynamically using the provided pattern
+    group_key_pattern = re.compile(f"(.*?{group_key})")
+
+    # Group files based on the dynamically extracted group key
+    data_list = {}
+    for file in filtered_list:
+        common_prefix_match = group_key_pattern.search(file)
+        if common_prefix_match:
+            common_prefix = common_prefix_match.group(1)
+            if common_prefix not in data_list:
+                data_list[common_prefix] = []
+            data_list[common_prefix].append(file)
+
+    # Filter groups that contain exactly the number of files in file_key_list
+    group_data_list = {
+        group_key: files for group_key, files in data_list.items()
+        if len(files) == len(file_key_list)
+    }
+
+    # Sort the files within each group based on file_key_list order
+    sorted_group_data_list = {}
+    for group_key, group_data in group_data_list.items():
+        sorted_group_data = sorted(
+            group_data,
+            key=lambda x: next((file_key for file_key in file_key_list if file_key in x), None)
+        )
+        sorted_group_data_list[group_key] = sorted_group_data
+        
+    return sorted_group_data_list
+
+
+def extracted_file_names_list_with_run_file(file_name_list, group_key):
+    # Extracted run files
+    run_file_list = []
+    for file in file_name_list:
+        if len(file.split(".")) > 2 and file.split(".")[1].lower() == "run" and re.search(group_key, file):
+            run_file_list.append(file)
+        elif len(file.split(".")) <= 2 and file.split(".")[1].lower() == "run" and re.search(group_key, file):
+            run_file_list.append(file)
+    LOGGER.info('List of run files: {}'.format(run_file_list))
     
-    
+    # Sorted run files
+    sorted_run_file_list = sorted(run_file_list, key=sort_run_files)
+    LOGGER.info('Sorted list of run files: {}'.format(sorted_run_file_list))
+
+    # Grouped files
+    group_data_list = {}
+    for run_file in sorted_run_file_list:
+        # Extract the prefix up to the SKU, including everything before the group key and the group key itself
+        match = re.search(group_key, run_file)
+        if match:
+            prefix = run_file[:match.end()]
+            group_file_list = [file_item for file_item in file_name_list if file_item.startswith(prefix)]
+            sorted_group_file_list = sorted(group_file_list)
+            # Insert the run file into the sorted list
+            sorted_group_file_list.append(run_file)
+            sorted_group_file_list.pop(0)
+            group_data_list[prefix] = sorted_group_file_list
+    return group_data_list
+
+def get_link_file_list(file_name_list, group_key, file_ready_flag, file_key_list=None):
+    # 1. Input value check
+    if not file_name_list:
+        return {}
+        
+    if not isinstance(group_key, str) or group_key == "":
+        LOGGER.error('No group key was specified.')
+        raise Exception
+        
+    if not isinstance(file_ready_flag, bool):
+        LOGGER.error('No run file flag was specified.')
+        raise Exception
+        
+    if file_ready_flag is False:
+        if not (isinstance(file_key_list, dict) and len(file_key_list["file_key_list"]) != 0 and isinstance(file_key_list["file_key_list"], list)):
+            LOGGER.error('No file key list was specified.')
+            raise Exception
+
+    try:
+        if file_ready_flag is False:
+            # 2. RUN file flag is FALSE
+            result = filter_files_with_file_keys(filter_files_with_group_key(file_name_list, group_key),group_key, file_key_list["file_key_list"])
+
+            # 4. Return of acquisition results
+            return result
+        else:
+            # 3. RUN file flag is TRUE
+            result = extracted_file_names_list_with_run_file(file_name_list, group_key)
+
+            # 4. Return of acquisition results
+            return result
+    except Exception as e:
+        print(e)
+        raise Exception
+
+link_file_list = ['s3-sys-4-2/S3-SYS-4-1_50060_Sales_01_0001-AAA-20240606.csv.20240916181607', 's3-sys-4-2/S3-SYS-4-1_50060_Sales_01_0001-AAA-20240606.csv.20240916181857', 's3-sys-4-2/S3-SYS-4-1_50060_Sales_01_0001-AAA-20240606.csv.20240916181625', 's3-sys-4-2/S3-SYS-4-1_50060_Sales_01_0001-AAA-20240606.csv.20240916181913', 's3-sys-4-2/S3-SYS-4-1_50060_Sales_01_0001-AAA-20240606.csv.20240916181630', 's3-sys-4-2/S3-SYS-4-1_50060_Sales_01_0001-AAA-20240606.csv.20240916181918', 's3-sys-4-2/S3-SYS-4-1_50060_Sales_01_0001-BBB-20240606.csv.20240916181954', 's3-sys-4-2/S3-SYS-4-1_50060_Sales_01_0001-BBB-20240606.csv.20240916182010', 's3-sys-4-2/S3-SYS-4-1_50060_Sales_01_0001-BBB-20240606.csv.20240916182015', 's3-sys-4-2/S3-SYS-4-1_50060_Sales_01_0001-CCC-20240606.csv.20240916182042', 's3-sys-4-2/S3-SYS-4-1_50060_Sales_01_0001-CCC-20240606.csv.20240916182059', 's3-sys-4-2/S3-SYS-4-1_50060_Sales_01_0001-CCC-20240606.csv.20240916182104']
+processed_list = list(set([file.split('.csv')[0] + '.csv' for file in link_file_list]))
+
+
+# link_file_list = ['s3-sys-4-2/S3-SYS-4-1_50060_Sales_01_0001-AAA-20240606.csv.20240916160843', 's3-sys-4-2/S3-SYS-4-1_50060_Sales_01_0001-BBB-20240606.csv.20240916160859', 's3-sys-4-2/S3-SYS-4-1_50060_Sales_01_0001-CCC-20240606.csv.20240916160907']
+group_keys = 'Sales_\d{2}_\d{4}'
+
+outbound_file_ready_flag = False
+file_key_lists = '{"file_key_list": ["AAA", "BBB", "CCC"]}'
+
+
+print(get_link_file_list(processed_list,group_keys,outbound_file_ready_flag,json.loads(file_key_lists) if file_key_lists else None))

@@ -3,7 +3,7 @@ def fib(n):
     while a<n:
         print(a,end=' ')
         a,b = b,a+b
-    print()
+    # print()
 
 f = fib
 f(100)
