@@ -4,7 +4,7 @@ print(x(5))
 import random
 
 # Random number with seed 6
-random.seed(6)
+random.seed(100)
 print(random.randint(10, 20))
 
 random.seed(6)

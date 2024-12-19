@@ -59,15 +59,16 @@
 # print(myList)
 
 
-def function(nums,target):
-  for i in range(0,len(nums)-1):
-    for j in range(1,len(nums)):
-      if nums[i]+nums[j]==target:
-          index=[i,j]
-          return(index)
+# def function(nums,target):
+#   for i in range(0,len(nums)-1):
+#     for j in range(1,len(nums)):
+#       if nums[i]+nums[j]==target:
+#           index=[i,j]
+#           return(index)
 
-nums = [1,2,4,5,2,0]
-target=7
-res = function(nums,target)
-print(res)
+# nums = [1,2,4,5,2,0]
+# target=7
+# res = function(nums,target)
+# print(res)
+          
           
